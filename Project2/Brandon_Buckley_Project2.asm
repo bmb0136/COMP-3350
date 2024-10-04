@@ -1,3 +1,8 @@
+; Brandon Buckley
+; Brandon_Buckley_Project2.asm
+;
+; I used the tutorials and slides in Canvas to setup the project
+
 .386
 .model flat, stdcall
 .stack 4096
