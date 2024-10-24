@@ -1,7 +1,7 @@
 ; Brandon Buckley
 ; Brandon_Buckley_Project2.asm
 ;
-; TODO: help used
+; I used https://en.wikipedia.org/wiki/X86_instruction_listings for a list of available instructions
 
 .386
 .model flat, stdcall
