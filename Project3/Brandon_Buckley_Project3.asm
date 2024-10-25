@@ -28,6 +28,12 @@ loop1:
 	mov edi, 0
 skip_wrap:
 
+	; Wrap edi arround if it is < 0
+	cmp edi, 0
+	jge skip_wrap_neg:
+	mov edi, LENGTHOF input
+	sub edi, 1
+skip_wrap_neg:
 
 	; Copy value (have to use 2 instructions because I cannot directly copy)
 	mov al, [input + esi]
