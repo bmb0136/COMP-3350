@@ -1,5 +1,5 @@
 ; Brandon Buckley
-; Brandon_Buckley_Project2.asm
+; Brandon_Buckley_Project3.asm
 ;
 ; I used https://en.wikipedia.org/wiki/X86_instruction_listings for a list of available instructions
 
