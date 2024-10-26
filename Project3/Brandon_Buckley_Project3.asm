@@ -9,8 +9,8 @@
 .stack 4096
 ExitProcess PROTO, dwExitCode: DWORD
 .data
-input	BYTE	5, 0Ah, 2, 6, 0Ch, 9, 4
-shift	DWORD	3
+input	BYTE	0
+shift	DWORD	0
 output	BYTE	LENGTHOF input DUP(?)
 .code
 main PROC
