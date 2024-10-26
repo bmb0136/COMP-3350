@@ -2,6 +2,7 @@
 ; Brandon_Buckley_Project3.asm
 ;
 ; I used https://en.wikipedia.org/wiki/X86_instruction_listings for a list of available instructions
+; I asked in class if the shift variable will ever be negative
 
 .386
 .model flat, stdcall
@@ -28,12 +29,10 @@ loop1:
 	mov edi, 0
 skip_wrap:
 
-	; Wrap edi arround if it is < 0
-	cmp edi, 0
-	jge skip_wrap_neg
-	mov edi, LENGTHOF input
-	sub edi, 1
-skip_wrap_neg:
+	; Don't need to check edi < 0 since:
+	; - shift is always positive (asked in class)
+	; - edi is initalized to shift
+	; - edi will only ever increase or be snapped down to 0
 
 	; Copy value (have to use 2 instructions because I cannot directly copy)
 	mov al, [input + esi]
