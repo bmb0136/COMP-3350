@@ -78,6 +78,7 @@ L_count:
 
 	; Retrieve registers
 	pop eax
+	ret
 CountLetters ENDP
 
 end main
