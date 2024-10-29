@@ -41,7 +41,7 @@ L_init:
 	; Assume they are equal and look for a difference
 	mov eax, 1
 
-	mov ecx, LENGTHOF s1
+	mov ecx, 26
 L_compare:
 	; bl = count_s1[ecx - 1]
 	mov bl, [esp + ecx - 1]
