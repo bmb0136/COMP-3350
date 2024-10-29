@@ -52,7 +52,7 @@ L_compare:
 	; bl != bh -> s1 and s2 are not anagrams
 	mov eax, 0
 	; break
-	mov ecx, 0
+	mov ecx, 1 ; If ecx is set to 0 here the ecx will underflow when the loop subtracts 1
 skip_not_equal:
 	loop L_compare
 
