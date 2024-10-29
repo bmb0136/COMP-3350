@@ -41,4 +41,24 @@ L_init:
 	add esp, 52
 	INVOKE ExitProcess, 0
 main ENDP
+
+; CountLetters(char* str, unsigned char* counts, size_t length)
+; Arguments: esi = &str[0], edi = &counts[0], ecx = length
+; Returns: counts[i] contains the count of the (i + 1)th letter of the alphabet in str (0 -> A, 1 -> B, etc.)
+; Preconditions: counts is initialized to all zero
+CountLetters PROC
+	; Save registers
+	push eax
+
+L_count:
+	; eax = str[ecx - 1]
+	movzx eax, BYTE PTR [esi + ecx - 1]
+	; bytes[eax - 'A']++;
+	inc BYTE PTR [edi + eax - 'A']
+	loop L_count
+
+	; Retrieve registers
+	pop eax
+CountLetters ENDP
+
 end main
