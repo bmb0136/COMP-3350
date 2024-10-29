@@ -29,10 +29,12 @@ L_init:
 
 	mov esi, OFFSET s1
 	mov edi, esp
+	mov ecx, LENGTHOF s1
 	call CountLetters
 
 	mov esi, OFFSET s2
 	lea edi, [esp + 26]
+	mov ecx, LENGTHOF s2
 	call CountLetters
 
 	; Deallocate extra memory before exiting!
