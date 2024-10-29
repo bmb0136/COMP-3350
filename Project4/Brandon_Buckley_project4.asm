@@ -37,6 +37,25 @@ L_init:
 	mov ecx, LENGTHOF s2
 	call CountLetters
 
+	; Compare the two arrays
+	; Assume they are equal and look for a difference
+	mov eax, 1
+
+	mov ecx, LENGTHOF s1
+L_compare:
+	; bl = count_s1[ecx - 1]
+	mov bl, [esp + ecx - 1]
+	; bh = count_s2[ecx - 1]
+	mov bh, [esp + ecx + 25] ; + 26 - 1 = + 25
+	cmp bl, bh
+	je skip_not_equal
+	; bl != bh -> s1 and s2 are not anagrams
+	mov eax, 0
+	; break
+	mov ecx, 0
+skip_not_equal:
+	loop L_compare
+
 	; Deallocate extra memory before exiting!
 	add esp, 52
 	INVOKE ExitProcess, 0
