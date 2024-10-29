@@ -43,9 +43,9 @@ L_init:
 
 	mov ecx, 26
 L_compare:
-	; bl = count_s1[ecx - 1]
+	; bl = count_s1[ecx - 1];
 	mov bl, [esp + ecx - 1]
-	; bh = count_s2[ecx - 1]
+	; bh = count_s2[ecx - 1];
 	mov bh, [esp + ecx + 25] ; + 26 - 1 = + 25
 	cmp bl, bh
 	je skip_not_equal
@@ -70,7 +70,7 @@ CountLetters PROC
 	push eax
 
 L_count:
-	; eax = str[ecx - 1]
+	; eax = str[ecx - 1];
 	movzx eax, BYTE PTR [esi + ecx - 1]
 	; bytes[eax - 'A']++;
 	inc BYTE PTR [edi + eax - 'A']
