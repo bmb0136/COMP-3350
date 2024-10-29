@@ -8,8 +8,8 @@
 .stack 4096
 ExitProcess PROTO, dwExitCode: DWORD
 .data
-s1	BYTE	"GARDEN"
-s2	BYTE	"DANGER"
+s1	BYTE	"s1 here"
+s2	BYTE	"s2 here"
 .code
 main PROC
 	; I would like to allocate 2 26 byte arrays to the stack
