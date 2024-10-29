@@ -13,7 +13,6 @@ s1	BYTE	"GARDEN"
 s2	BYTE	"DANGER"
 .code
 main PROC
-main ENDP
 	; I would like to allocate 2 26 byte arrays to the stack
 	; But I can't exactly push 52 bytes so I'm just going to do this
 	; Layout:
@@ -36,4 +35,5 @@ main ENDP
 	; Deallocate extra memory before exiting!
 	add esp, 52
 	INVOKE ExitProcess, 0
+main ENDP
 end main
