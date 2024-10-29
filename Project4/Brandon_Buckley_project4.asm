@@ -24,7 +24,7 @@ main PROC
 	; 52 / 4 = 13, so just mov 13
 	mov ecx, 13
 L_init:
-	mov 0, DWORD PTR [esp + ecx - 1]
+	mov DWORD PTR [esp + ecx - 1], 0
 	loop L_init
 
 	mov esi, OFFSET s1
