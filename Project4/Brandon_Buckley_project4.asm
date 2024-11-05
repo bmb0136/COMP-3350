@@ -1,15 +1,16 @@
 ; Brandon Buckley
 ; Brandon_Buckley_Project4.asm
 ;
-; TODO: help used
+; Help used:
+; - https://en.wikipedia.org/wiki/X86_instruction_listings
 
 .386
 .model flat, stdcall
 .stack 4096
 ExitProcess PROTO, dwExitCode: DWORD
 .data
-s1	BYTE	"s1 here"
-s2	BYTE	"s2 here"
+s1	BYTE	"ABCD"
+s2	BYTE	"ABCD"
 .code
 main PROC
 	; I would like to allocate 2 26 byte arrays to the stack
@@ -42,16 +43,15 @@ L_init:
 
 	mov eax, 1               ; Assume they are equal and look for a difference
 
-	mov ecx, 26              ; Looping over the count arrays, not the strings
-L_compare:
-	mov bl, [esp + ecx - 1]  ; bl = count_s1[ecx - 1];
-	mov bh, [esp + ecx + 25] ; bh = count_s2[ecx - 1];
-	cmp bl, bh
-	je skip_not_equal
-	mov eax, 0               ; bl != bh -> s1 and s2 are not anagrams
-	mov ecx, 1               ; break; If ecx is set to 0 here the ecx will underflow when the loop subtracts 1
-skip_not_equal:
-	loop L_compare
+	; esi = &array1[0], edi = &array2[0], ecx = number of bytes to compare
+	mov ecx, 26
+	mov esi, esp             ; &count_s1[0]
+	; edi is already &count_s2[0]
+	repe cmpsb               ; "cmpsb" = compare byte arrays, "repe" = repeat while equal (stop at first difference)
+
+	je are_anagrams
+	mov eax, 0
+are_anagrams:
 
 	add esp, 52              ; Deallocate extra memory before exiting!
 	INVOKE ExitProcess, 0
