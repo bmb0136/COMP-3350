@@ -47,6 +47,7 @@ L_init:
 	mov ecx, 26
 	mov esi, esp             ; &count_s1[0]
 	; edi is already &count_s2[0]
+	cld                      ; Set DF=0 (esi and edi point to the first elements)
 	repe cmpsb               ; "cmpsb" = compare byte arrays, "repe" = repeat while equal (stop at first difference)
 
 	je are_anagrams
