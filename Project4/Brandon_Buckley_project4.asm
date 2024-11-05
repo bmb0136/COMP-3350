@@ -18,7 +18,7 @@ main PROC
 	; Layout:
 	; &count_s1[0] = esp
 	; &count_s2[0] = esp + 26
-	sub esp, 52 ; Stack grows down!
+	sub esp, 52              ; Stack grows down!
 
 	; Initialize both arrays to zero
 	; 52 / 4 = 13, so just mov 13 zeroes
@@ -39,10 +39,11 @@ L_init:
 	mov ecx, LENGTHOF s2
 	call CountLetters
 
-	; Compare the two arrays
-
 	mov eax, 1               ; Assume they are equal and look for a difference
 
+	; Compare the two arrays
+	; Found this interesting instruction on the Wikipedia instruction list
+	; It does an array comparison in one instruction which is insane
 	; esi = &array1[0], edi = &array2[0], ecx = number of bytes to compare
 	mov ecx, 26
 	mov esi, esp             ; &count_s1[0]
