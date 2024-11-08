@@ -61,14 +61,11 @@ main ENDP
 ; Returns: counts[i] contains the count of the (i + 1)th letter of the alphabet in str (0 -> A, 1 -> B, etc.)
 ; Preconditions: counts is initialized to all zero
 CountLetters PROC
-	push eax                            ; Save eax
-
 L_count:
 	movzx eax, BYTE PTR [esi + ecx - 1] ; eax = str[ecx - 1];
 	inc BYTE PTR [edi + eax - 'A']      ; bytes[eax - 'A']++;
 	loop L_count
 
-	pop eax                             ; Retrieve eax
 	ret
 CountLetters ENDP
 
