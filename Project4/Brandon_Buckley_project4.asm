@@ -18,13 +18,10 @@ main PROC
 	; Layout:
 	; &count_s1[0] = esp
 	; &count_s2[0] = esp + 26
-	sub esp, 52              ; Stack grows down!
-
-	; Initialize both arrays to zero
-	; 52 / 4 = 13, so just mov 13 zeroes
+	; 52 / 4 = 13, so just mov 13 DWORD zeroes
 	mov ecx, 13
 L_init:
-	mov DWORD PTR [esp + ecx - 1], 0
+	push DWORD PTR 0         ; Force MASM to push a DWORD instead of something else
 	loop L_init
 
 	; CountLetters(s1, count_s1, len(s1))
