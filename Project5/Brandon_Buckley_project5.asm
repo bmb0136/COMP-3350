@@ -18,6 +18,34 @@ main PROC
 	INVOKE ExitProcess, 0
 main ENDP
 
+; Encrypt()
+; Arguments: none 
+; Returns: output contains input encrypted
+; Preconditions: len(output)==len(input), 1<=len(key)<len(input)
+Encrypt PROC
+	mov ecx, LENGTHOF input
+
+L_encrypt:
+	mov eax, ecx
+	sub eax, 1
+	call GetKeyByte
+
+	movzx ebx, [input + ecx - 1]
+	sub ebx, 'A'
+	add eax, ebx
+
+	mov ebx, 26
+	call Modulo
+
+	add eax, 'A'
+	mov [output + ecx - 1], al
+
+	loop L_encrypt
+
+	ret
+Encrypt ENDP
+
+
 ; GetKeyByte(i)
 ; Arguments: eax = i
 ; Returns: eax = key[i % len(key)] - 'A'
