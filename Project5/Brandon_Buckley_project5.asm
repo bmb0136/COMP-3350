@@ -37,8 +37,15 @@ GetKeyByte ENDP
 ; Mod(x, y)
 ; Arguments: eax=x, ebx=y
 ; Returns: eax = x % y
-; Preconditions: eax >= 0, ebx != 0
+; Preconditions: ebx != 0
 Modulo PROC
+	cmp eax, 0
+	jge positive
+L_add:
+	add eax, ebx
+	js L_add
+	ret
+positive:
 	push edx
 
 	mov edx, 0
