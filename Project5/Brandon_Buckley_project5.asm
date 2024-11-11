@@ -15,6 +15,13 @@ options	BYTE	0
 output	BYTE	0 DUP(LENGTHOF input)
 .code
 main PROC
+	cmp options, 1
+	jne decrypt
+	call Encrypt
+	jmp end
+decrypt:
+	call Decrypt
+end:
 	INVOKE ExitProcess, 0
 main ENDP
 
@@ -80,7 +87,6 @@ L_encrypt:
 
 	ret
 Encrypt ENDP
-
 
 ; GetKeyByte(i)
 ; Arguments: eax = i
