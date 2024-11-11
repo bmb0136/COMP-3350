@@ -46,6 +46,8 @@ Modulo PROC
 	mov eax, edx
 
 	pop edx
+
+	ret
 Modulo ENDP
 
 END main
