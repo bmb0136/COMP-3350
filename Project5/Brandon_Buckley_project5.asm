@@ -31,7 +31,7 @@ L_decrypt:
 	sub eax, 1
 	call GetKeyByte
 
-	; eax -= input[ecx - 1] - 'A'
+	; eax = (input[ecx - 1] - 'A') - eax
 	movzx ebx, [input + ecx - 1]
 	sub ebx, 'A'
 	xchg eax, ebx
