@@ -16,10 +16,10 @@ output	BYTE	0 DUP(LENGTHOF input)
 .code
 main PROC
 	cmp options, 1
-	jne decrypt
+	jne run_decrypt
 	call Encrypt
 	jmp skip
-decrypt:
+run_decrypt:
 	call Decrypt
 skip:
 	INVOKE ExitProcess, 0
