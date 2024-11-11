@@ -25,7 +25,7 @@ main ENDP
 GetKeyByte PROC
 	push ebx
 	mov ebx, LENGTHOF key
-	call Mod
+	call Modulo
 	pop ebx
 
 	movzx eax, [key + eax]
@@ -38,7 +38,7 @@ GetKeyByte ENDP
 ; Arguments: eax=x, ebx=y
 ; Returns: eax = x % y
 ; Preconditions: eax >= 0, ebx != 0
-Mod PROC
+Modulo PROC
 	push edx
 
 	mov edx, 0
@@ -46,6 +46,6 @@ Mod PROC
 	mov eax, edx
 
 	pop edx
-MOD ENDP
+Modulo ENDP
 
 END main
