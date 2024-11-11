@@ -9,9 +9,9 @@
 .stack 4096
 ExitProcess PROTO, dwExitCode: DWORD
 .data
-input	BYTE	"MEMORY"
-key		BYTE	"BAD"
-options	BYTE	1
+input	BYTE	"JPUESZSBAPANNHTXRTLBVLL"
+key		BYTE	"ABCXYZ"
+options	BYTE	0
 output	BYTE	0 DUP(LENGTHOF input)
 .code
 main PROC
