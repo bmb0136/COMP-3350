@@ -26,17 +26,21 @@ Encrypt PROC
 	mov ecx, LENGTHOF input
 
 L_encrypt:
+	; eax = key[(ecx - 1) % len(key)] - 'A'
 	mov eax, ecx
 	sub eax, 1
 	call GetKeyByte
 
+	; eax += input[ecx - 1] - 'A'
 	movzx ebx, [input + ecx - 1]
 	sub ebx, 'A'
 	add eax, ebx
 
+	; eax %= 26
 	mov ebx, 26
 	call Modulo
 
+	; output[ecx - 1] = eax;
 	add eax, 'A'
 	mov [output + ecx - 1], al
 
