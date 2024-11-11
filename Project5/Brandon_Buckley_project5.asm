@@ -23,21 +23,29 @@ main ENDP
 ; Returns: eax = key[i % len(key)] - 'A'
 ; Preconditions: len(key) > 0, eax >= 0
 GetKeyByte PROC
-	push edx
-	push ecx
-
-	mov edx, 0
-	mov ecx, LENGTHOF key
-	div ecx
-	mov eax, edx
-
-	pop ecx
-	pop edx
+	push ebx
+	mov ebx, LENGTHOF key
+	call Mod
+	pop ebx
 
 	movzx eax, [key + eax]
 	sub eax, 'A'
 
 	ret
 GetKeyByte ENDP
+
+; Mod(x, y)
+; Arguments: eax=x, ebx=y
+; Returns: eax = x % y
+; Preconditions: eax >= 0, ebx != 0
+Mod PROC
+	push edx
+
+	mov edx, 0
+	div ebx
+	mov eax, edx
+
+	pop edx
+MOD ENDP
 
 END main
