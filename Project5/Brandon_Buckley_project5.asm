@@ -26,15 +26,15 @@ Decrypt PROC
 	mov ecx, LENGTHOF input
 
 L_decrypt:
-	; eax = key[(ecx - 1) % len(key)] - 'A'
+	; ebx = key[(ecx - 1) % len(key)] - 'A'
 	mov eax, ecx
 	sub eax, 1
 	call GetKeyByte
+	mov ebx, eax
 
 	; eax = (input[ecx - 1] - 'A') - eax
-	movzx ebx, [input + ecx - 1]
-	sub ebx, 'A'
-	xchg eax, ebx
+	movzx eax, [input + ecx - 1]
+	sub eax, 'A'
 	sub eax, ebx
 
 	; eax %= 26
