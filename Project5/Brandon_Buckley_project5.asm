@@ -18,10 +18,10 @@ main PROC
 	cmp options, 1
 	jne decrypt
 	call Encrypt
-	jmp end
+	jmp skip
 decrypt:
 	call Decrypt
-end:
+skip:
 	INVOKE ExitProcess, 0
 main ENDP
 
