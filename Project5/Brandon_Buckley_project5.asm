@@ -39,7 +39,7 @@ L_decrypt:
 	call GetKeyByte
 	mov ebx, eax
 
-	; eax = (input[ecx - 1] - 'A') - eax
+	; eax = (input[ecx - 1] - 'A') - ebx
 	movzx eax, [input + ecx - 1]
 	sub eax, 'A'
 	sub eax, ebx
