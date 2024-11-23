@@ -3,6 +3,7 @@
 ;
 ; Help used:
 ; - https://en.wikipedia.org/wiki/X86_instruction_listings
+; - https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 
 .386
 .model flat, stdcall
