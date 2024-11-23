@@ -48,7 +48,7 @@ L_decrypt:
 	mov ebx, 26
 	call Modulo
 
-	; output[ecx - 1] = eax;
+	; output[ecx - 1] = eax + 'A';
 	add eax, 'A'
 	mov [output + ecx - 1], al
 
